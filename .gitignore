@@ -1,0 +1,11 @@
+*Test*.lhs
+*Test*.hi
+*Test*.o
+*Test*.hs
+
+BinaryRelation.hs
+Number.hs
+Relations.hs
+
+HW2-Q2.txt
+*_Test_Result.txt

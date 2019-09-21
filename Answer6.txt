@@ -1,0 +1,4 @@
+There is no simple list comprehension to drop Nth iteration of an element from the list.
+This would require a map to generate another list which counts the iteration incrementally.
+And these two lists will have to be zipped and then a comprehension could go and check for 
+iteration counter and just drop the element maching the counter. 
