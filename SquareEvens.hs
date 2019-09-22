@@ -3,6 +3,5 @@
 
 module SquareEvens where
     squareEvens :: [Integer] -> [Integer]
-    squareEvens lst = [ if even num then num * num else | num <- lst ]
-
+    squareEvens lst = [ if even num then num * num else num | num <- lst ]
 -- End of code
