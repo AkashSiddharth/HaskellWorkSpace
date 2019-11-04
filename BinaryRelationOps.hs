@@ -1,25 +1,15 @@
--- Problem : Write functions to operate on Binary Relations
-
-module BinaryRelationOps where 
-    import BinaryRelation
-
-    -- returns a list of all the keys of the relation
-    first :: (BinaryRelation a b) -> [a]
-    first b_rel = [ fst pair | pair <- b_rel ]
-
-    --  returns a list of all the values of the relation
-    second :: (BinaryRelation a b) -> [b]
-    second b_rel = [ snd pair | pair <- b_rel ]
-
-    -- takes a predicate and a binary relation and returns a list of all the tuples
-    -- in the relation that satisfythe predicate (in their original order).
-    select :: ((a,b) ->Bool) -> (BinaryRelation a b) -> (BinaryRelation a b)
-    select predicate b_rel = [ pair | pair <- b_rel, predicate pair ]
-
-    -- takes two binary relation and returns their relational composition, that
-    -- is the list of pairs(a, c)suchthat there is some pair(a, b)in the first
-    -- argument binary relation and a pair(b, c)in the secondrelation argument.
-    compose ::Eq b => (BinaryRelation a b) -> (BinaryRelation b c)-> (BinaryRelation a c)
-    compose b_rel1 b_rel2 = [ (fst pair1, snd pair2) | pair1 <- b_rel1, pair2 <- b_rel2, snd pair1 == fst pair2 ]
-
--- End of code
+module BinaryRelationOps where
+import BinaryRelation
+first :: (BinaryRelation a b) -> [a]
+first [] = []
+first ((k,v):rest) = k:first(rest)
+second :: (BinaryRelation a b) -> [b]
+second [] = []
+second ((k,v):rest) = v:second(rest)
+select :: ((a,b) -> Bool) -> (BinaryRelation a b) -> (BinaryRelation a b)
+select pred [] = []
+select pred ((k,v):rest) = if (pred (k,v)) 
+                           then (k,v):select pred rest
+                           else select pred rest
+compose :: Eq b => (BinaryRelation a b) -> (BinaryRelation b c) -> (BinaryRelation a c)
+compose list1 list2 = [(a,d) | (a,b) <- list1, (c,d) <- list2, b == c]
