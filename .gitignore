@@ -2,6 +2,7 @@
 *Test*.hi
 *Test*.o
 *Test*.hs
+*.7z
 
 BinaryRelation.hs
 Number.hs
